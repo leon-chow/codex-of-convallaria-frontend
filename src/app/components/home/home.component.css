@@ -1,0 +1,14 @@
+.header {
+  font-size: 2rem;
+}
+
+.root {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.link {
+  padding: 1rem;
+  list-style-type: none;
+}
