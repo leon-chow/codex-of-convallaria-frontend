@@ -3,6 +3,7 @@
   <ul class="links">
     <li class="link">
       <a href="/characters"> Characters </a>
+      <button (click)="click()"> click me! </button>
     </li>
     <li class="link">
       <a href="/abilities"> Abilities </a>
@@ -11,7 +12,8 @@
       <a href="/items"> Items </a>
     </li>
     <li class="link">
-      <a href="/story"> Story </a>
+      <a onclick="click()" href="/story"> Story </a>
     </li>
   </ul>
+  {{person}}
 </div>

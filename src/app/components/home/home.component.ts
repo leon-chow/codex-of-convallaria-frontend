@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  person = "123";
 
+  click() {
+    console.log("you clicked me!");
+  }
 }
