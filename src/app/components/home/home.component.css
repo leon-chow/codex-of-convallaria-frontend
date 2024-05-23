@@ -1,5 +1,5 @@
-.header {
-  font-size: 2rem;
+.options {
+  display: flex;
 }
 
 .root {
@@ -9,6 +9,17 @@
 }
 
 .link {
+  text-shadow: 1px 1px 2px black;
   padding: 1rem;
+  font-size: 1.5rem;
   list-style-type: none;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: lightgray;
 }
