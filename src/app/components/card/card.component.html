@@ -1,35 +1,9 @@
 <div class="root">
-  <div class="sub-header"> 
-    <div>
-      ID: {{ details.id}} 
-    </div>
-    <div>
-      Name: {{ details.name }} 
-    </div>
-    <div class="section">
-      <div>
-        Gender: {{ details.gender }} 
-      </div>
-      <div>
-        Rarity: {{ details.rarity }}
-      </div>
-    </div>
-    <div class="section">
-      Identity: {{ details.identity }} 
-      Class: {{ details.class }} 
-      Weapons: {{ details.weapons }} 
-      Faction: {{ details.faction }} 
-    </div>
-    <div class="section">
-      JA VA: {{ details.japaneseVA }} 
-      Release Date: {{ details.releaseDate }} 
-      Bio: {{ details.bio }} 
-    </div>
-    <div class="section">
-      Abilities: {{ details.abilities }}
-      Recommendations: {{ details.recommendations }}
-      Base Stats: {{ details.baseStats }}
-      Banner Type: {{ details.bannerType }}
-    </div>
+  <div>
+    ID: {{ details.id}} 
   </div>
+  <div>
+    Name: {{ details.name }} 
+  </div>
+  <img class="img" src="../../../assets/{{details.name | lowercase }}_pixel.png"> 
 </div>

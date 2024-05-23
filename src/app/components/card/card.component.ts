@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { ICharacter } from '../../models/character';
+import { LowerCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [],
+  imports: [LowerCasePipe],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })

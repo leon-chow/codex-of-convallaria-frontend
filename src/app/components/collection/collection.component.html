@@ -1,6 +1,6 @@
 <div class="root">
   <h1 class="header"> {{ header | titlecase }} </h1>
   <ul class="grid">
-    <app-card *ngFor="let character of characters" [details]="character"></app-card>
+    <app-card class="card" *ngFor="let character of characters" [details]="character"></app-card>
   </ul>
 </div>

@@ -4,6 +4,10 @@
   flex-direction: column;
 }
 
+.card {
+  padding: 1rem;
+}
+
 .grid {
   display: flex;
   justify-content: center;
@@ -11,4 +15,5 @@
   color: white;
   flex-direction: row;
   text-shadow: 1px 1px 2px black;
+  padding: 1rem;
 }

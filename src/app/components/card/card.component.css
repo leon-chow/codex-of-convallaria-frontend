@@ -1,10 +1,19 @@
 .root {
   display: flex;
-  flex-direction: row;
-  font-size: 2rem;
+  flex-direction: column;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  border: 1px solid gray;
+  width: 7.5rem;
+  height: 10rem;
 }
 
 .section {
   display: flex;
   flex-direction: row;
+}
+
+.img {
+  width: 5rem;
 }
