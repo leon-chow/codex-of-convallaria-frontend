@@ -1,4 +1,4 @@
-import { TitleCasePipe } from '@angular/common';
+import { CommonModule, TitleCasePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CharactersService } from '../../services/characters/characters.service';
@@ -9,7 +9,7 @@ import { CardComponent } from '../card/card.component';
 @Component({
   selector: 'app-collection',
   standalone: true,
-  imports: [TitleCasePipe, NgFor, CardComponent],
+  imports: [TitleCasePipe, NgFor, CardComponent, CommonModule],
   templateUrl: './collection.component.html',
   styleUrl: './collection.component.css',
 })
@@ -19,16 +19,11 @@ export class CollectionComponent {
 
   }
 
-  characters: ICharacter[] = [];
+  characters?: ICharacter[] = [];
 
+  // TODO: Fix
   ngOnInit() {
-    this.getCharacters();
-  }
-
-  getCharacters() {
-    this.characterService.getCharacters().subscribe((characters: ICharacter[]) => {
-      this.characters = characters;
-    });
+    this.characters = this.characterService.characters;
   }
   
   header = this.route.snapshot.data["type"];
