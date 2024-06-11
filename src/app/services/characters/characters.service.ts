@@ -9,17 +9,24 @@ import { FetchService } from '../fetch/fetch.service';
   providedIn: 'root'
 })
 export class CharactersService {
-  token = "qhp9Fi53DlPzz7U3kD0AfkQVrYd1Mz4kT2QC8IFIVDnefPVfm5r35QALs3Wjdb6k";
-  header = new HttpHeaders({ 
-    'Authorization': `Bearer ${this.token}`, 
-  });
+  characters: ICharacter[] = [];
+  activeCharacter?: ICharacter;
+  path = `/characters`;
 
   constructor(private http: HttpClient, private fetchService: FetchService) { 
-
+    this.getCharacters();
   }
 
+  // Look into persisting this to reduce number of API calls
   getCharacters() {
-    const path = `/characters`;
-    return this.fetchService.get(path); 
+    this.fetchService.get(this.path).subscribe((characters: ICharacter[]) => {
+      for (const character of characters) {
+        this.characters.push(character);
+      }
+    }); 
+  }
+
+  setCharacter(currentCharacter: ICharacter) {
+    this.activeCharacter = currentCharacter;
   }
 }

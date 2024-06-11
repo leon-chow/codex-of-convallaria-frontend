@@ -10,7 +10,8 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './details.component.html',
-  styleUrl: './details.component.css'
+  styleUrl: './details.component.css',
+  providers: [CharactersService]
 })
 export class DetailsComponent {
   details?: ICharacter;
@@ -21,6 +22,6 @@ export class DetailsComponent {
   id: string | null = this.route.snapshot.paramMap.get('id');
   
   ngOnInit() {
-    this.details = this.characterService.characters?.find(character => character.id === (this.id ? +this.id : 0)); 
+    this.details = this.characterService.characters.find(character => character.id === (this.id ? +this.id : 0)); 
   }
 }

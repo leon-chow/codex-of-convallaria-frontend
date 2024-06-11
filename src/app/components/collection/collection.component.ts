@@ -11,18 +11,13 @@ import { CardComponent } from '../card/card.component';
   standalone: true,
   imports: [TitleCasePipe, NgFor, CardComponent, CommonModule],
   templateUrl: './collection.component.html',
+  providers: [CharactersService],
   styleUrl: './collection.component.css',
 })
 export class CollectionComponent {
-
-  constructor(private route: ActivatedRoute, private router: Router, private characterService: CharactersService) {
-
-  }
-
   characters?: ICharacter[] = [];
 
-  // TODO: Fix
-  ngOnInit() {
+  constructor(private route: ActivatedRoute, private router: Router, private characterService: CharactersService) {
     this.characters = this.characterService.characters;
   }
   
