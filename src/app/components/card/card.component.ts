@@ -16,13 +16,11 @@ export class CardComponent {
 
   }
   @Input() details!: ICharacter;
-  
-  ngOnInit() {
-    console.log(this.details);
-  }
 
-  viewDetails(characterId: number) {
-    this.characterService.setCharacter(this.details);
-    this.router.navigate(['/characters', this.details.id])
+  viewDetails() {
+    this.characterService.removeActiveCharacter();
+    this.characterService.setActiveCharacter(this.details);
+      
+    this.router.navigate(['/characters', this.details.id], {state: {activeCharacter: this.details}});
   }
 }

@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { ICharacter } from '../../models/character';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CharactersService } from '../../services/characters/characters.service';
 import { CommonModule } from '@angular/common';
-
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-details',
@@ -14,14 +14,14 @@ import { CommonModule } from '@angular/common';
   providers: [CharactersService]
 })
 export class DetailsComponent {
-  details?: ICharacter;
-  constructor(private route: ActivatedRoute, private characterService: CharactersService) {
-
+  activeCharacter?: ICharacter;
+  constructor(private router: Router, private route: ActivatedRoute, private characterService: CharactersService) {
+    this.activeCharacter = this.router.getCurrentNavigation()?.extras.state?.['activeCharacter'];
   }
 
   id: string | null = this.route.snapshot.paramMap.get('id');
   
   ngOnInit() {
-    this.details = this.characterService.characters.find(character => character.id === (this.id ? +this.id : 0)); 
+
   }
 }

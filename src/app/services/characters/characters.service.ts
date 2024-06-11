@@ -26,7 +26,11 @@ export class CharactersService {
     }); 
   }
 
-  setCharacter(currentCharacter: ICharacter) {
+  setActiveCharacter(currentCharacter: ICharacter) {
     this.activeCharacter = currentCharacter;
+  }
+
+  removeActiveCharacter() {
+    this.activeCharacter = undefined;
   }
 }

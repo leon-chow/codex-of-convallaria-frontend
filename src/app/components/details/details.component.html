@@ -1,6 +1,15 @@
-<div class="root" *ngIf="details">
-  <h1> {{ details.name }} </h1>
+<div class="root" *ngIf="activeCharacter">
+  <div class="title">
+    <h1> {{ activeCharacter.name }} </h1>
+  </div>
+  <img class="img" src="../../../assets/{{activeCharacter.name | lowercase }}_details.png"> 
+  <div class="subtitle">
+    <h2> Details </h2>
+  </div>
+  <div class="stats-table">
+    <!-- TODO: Put angular material table here -->
+  </div>
 </div>
-<div> 
-  <h1> Character not found </h1>
+<div class="root" *ngIf="!activeCharacter"> 
+  <h1> Character not found... </h1> 
 </div>

@@ -35,6 +35,8 @@ interface IBaseStats {
   magAtk?: number;
   magDef?: number;
   speed?: number;
+  move?: number;
+  jump?: number;
 }
 
 interface IRecommendedGroup {
