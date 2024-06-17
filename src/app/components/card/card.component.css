@@ -7,11 +7,18 @@
   border: 1px solid gray;
   width: 7.5rem;
   height: 10rem;
+  align-items: center;
+  cursor: pointer;
 }
 
 .section {
   display: flex;
   flex-direction: row;
+}
+
+.text {
+  text-align: left;
+  width: 100%;
 }
 
 .img {
