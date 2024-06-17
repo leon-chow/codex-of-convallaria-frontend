@@ -7,6 +7,17 @@ export const desluggifyText = (text: string) => {
   return text.replace("-", " ");
 }
 
+export function normalizeAndCapitalizeText(input: string) {
+  // Split the input string at capital letters
+  const words = input.split(/(?=[A-Z])/);
+
+  // Capitalize the first letter of each word
+  const capitalizedWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1));
+
+  // Join the capitalized words with a space
+  return capitalizedWords.join(' ');
+}
+
 export const compareDates = (dateA: string, dateB: string) => {
   const partsA = dateA.split('/');
   const partsB = dateB.split('/');

@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { CdkTableDataSourceInput } from '@angular/cdk/table';
 import { MatSortModule } from '@angular/material/sort';
+import { normalizeAndCapitalizeText } from '../../utils/string';
 
 interface ITableData {
   key: string,
@@ -35,7 +36,7 @@ export class DetailsComponent {
     if (this.activeCharacter) {
       console.log(this.tableColumns);
       const tableData = Object.entries(this.activeCharacter).map(([key, value]) => {
-        return { key, value};
+        return { key: normalizeAndCapitalizeText(key), value};
       }).slice(1);
       this.tableStats = new MatTableDataSource<ITableData>(tableData);
       console.log(this.tableStats);
