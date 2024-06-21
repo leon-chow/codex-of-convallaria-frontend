@@ -24,6 +24,7 @@ interface ITableData {
 
 export class DetailsComponent {
   activeCharacter?: ICharacter;
+  keysToRemove: string[] = ['name', 'pixelImageUrl', 'profileImageUrl'];
   tableColumns: string[] = ['key', 'value'];
   tableStats: MatTableDataSource<ITableData> | undefined;
   constructor(private router: Router, private route: ActivatedRoute, private characterService: CharactersService) {
@@ -31,15 +32,23 @@ export class DetailsComponent {
   }
 
   id: string | null = this.route.snapshot.paramMap.get('id');
+
+  // TODO: Refactor 
+  normalizeTableData(): ITableData[] {
+    const normalizedCharacter = this.activeCharacter;
+    const tableData = Object.entries(normalizedCharacter!).map(([key, value]) => {
+      return { key, value};
+    }).filter(data => !this.keysToRemove.includes(data.key));
+    tableData.forEach(entry => {
+      entry.key = normalizeAndCapitalizeText(entry.key);
+    });
+    return tableData;
+  }
   
   ngOnInit() {
     if (this.activeCharacter) {
-      console.log(this.tableColumns);
-      const tableData = Object.entries(this.activeCharacter).map(([key, value]) => {
-        return { key: normalizeAndCapitalizeText(key), value};
-      }).slice(1);
-      this.tableStats = new MatTableDataSource<ITableData>(tableData);
-      console.log(this.tableStats);
+      const normalizedTableData = this.normalizeTableData();
+      this.tableStats = new MatTableDataSource<ITableData>(normalizedTableData);
     } 
   }
 }
