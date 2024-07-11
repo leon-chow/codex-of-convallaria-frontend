@@ -12,10 +12,6 @@
   padding: 1rem 0;
 }
 
-.mat-column-key {
-  flex: 0 0 10%;
-}
-
 .title {
   box-shadow: 1px 2px 8px black;
   margin-bottom: 1rem;
@@ -36,7 +32,14 @@
   flex-direction: column;
 }
 
+.tables {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
 .stats-table {
+  margin: 1rem;
   border-radius: 1rem;
   max-width: 75%;
   padding: 1rem;
@@ -56,4 +59,15 @@
   .img {
     width: 15rem;
   }  
+  .tables {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .tables {
+    display: flex;
+    flex-direction: column;
+  }
 }

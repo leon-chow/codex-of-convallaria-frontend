@@ -24,7 +24,7 @@ interface ITableData {
 
 export class DetailsComponent {
   activeCharacter?: ICharacter;
-  keysToRemove: string[] = ['name', 'pixelImageUrl', 'profileImageUrl'];
+  keysToRemove: string[] = ['name', 'pixelImageUrl', 'profileImageUrl', 'abilities', 'recommendations'];
   tableColumns: string[] = ['key', 'value'];
   tableStats: MatTableDataSource<ITableData> | undefined;
   constructor(private router: Router, private route: ActivatedRoute, private characterService: CharactersService) {
@@ -41,6 +41,7 @@ export class DetailsComponent {
     }).filter(data => !this.keysToRemove.includes(data.key));
     tableData.forEach(entry => {
       entry.key = normalizeAndCapitalizeText(entry.key);
+      console.log(entry.value);
     });
     return tableData;
   }
