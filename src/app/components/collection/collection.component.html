@@ -1,5 +1,4 @@
 <div class="root">
-  <img class="background" src="../../../assets/sword_of_convallaria_background.jpg" />
   <h1 class="header"> {{ header | titlecase }} </h1>
   <ul class="grid" *ngIf="characters">
     <app-card class="card" *ngFor="let character of characters" [details]="character"></app-card>

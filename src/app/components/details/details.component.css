@@ -44,9 +44,11 @@
   max-width: 75%;
   padding: 1rem;
   background-color: white;
+  height: 100%;
 }
 
 .img {
+  background-color: #aaa;
   margin: 1rem;
   width: 30rem;
   border: 1px solid #eee;

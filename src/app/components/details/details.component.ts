@@ -24,9 +24,11 @@ interface ITableData {
 
 export class DetailsComponent {
   activeCharacter?: ICharacter;
-  keysToRemove: string[] = ['name', 'pixelImageUrl', 'profileImageUrl', 'abilities', 'recommendations'];
+  primaryKeysToRemove: string[] = ['name', 'pixelImageUrl', 'profileImageUrl', 'abilities', 'recommendations', 'baseStats'];
+  secondaryTableKeys: string[] = ['abilities', 'recommendations', 'baseStats'];
   tableColumns: string[] = ['key', 'value'];
-  tableStats: MatTableDataSource<ITableData> | undefined;
+  primaryTableStats: MatTableDataSource<ITableData> | undefined;
+  secondaryTableStats: MatTableDataSource<ITableData> | undefined;
   constructor(private router: Router, private route: ActivatedRoute, private characterService: CharactersService) {
     this.activeCharacter = this.router.getCurrentNavigation()?.extras.state?.['activeCharacter'];
   }
@@ -34,22 +36,49 @@ export class DetailsComponent {
   id: string | null = this.route.snapshot.paramMap.get('id');
 
   // TODO: Refactor 
-  normalizeTableData(): ITableData[] {
+  normalizePrimaryTableData(): ITableData[] {
     const normalizedCharacter = this.activeCharacter;
     const tableData = Object.entries(normalizedCharacter!).map(([key, value]) => {
       return { key, value};
-    }).filter(data => !this.keysToRemove.includes(data.key));
+    }).filter(data => !this.primaryKeysToRemove.includes(data.key));
+    tableData.forEach(entry => {
+      entry.key = normalizeAndCapitalizeText(entry.key);
+    });
+    return tableData;
+  }
+
+  normalizeSecondaryTableData(): ITableData[] {
+    const normalizedCharacter = this.activeCharacter;
+    const tableData = Object.entries(normalizedCharacter!).map(([key, value]) => {
+      return { key, value};
+    }).filter(data => this.secondaryTableKeys.includes(data.key));
     tableData.forEach(entry => {
       entry.key = normalizeAndCapitalizeText(entry.key);
       console.log(entry.value);
     });
-    return tableData;
+    // TODO: Move base stats first, then abilities and then recommendations
+    return tableData
+  }
+
+  // TODO: Fill these out
+  parseStats(): ITableData[] {
+    return [];
+  }
+
+  parseRecommendations(): ITableData[] {
+    return [];
+  }
+
+  parseAbilities(): ITableData[] {
+    return [];
   }
   
   ngOnInit() {
     if (this.activeCharacter) {
-      const normalizedTableData = this.normalizeTableData();
-      this.tableStats = new MatTableDataSource<ITableData>(normalizedTableData);
+      const normalizedFirstTableData = this.normalizePrimaryTableData();
+      const normalizedSecondTableData = this.normalizeSecondaryTableData();
+      this.primaryTableStats = new MatTableDataSource<ITableData>(normalizedFirstTableData);
+      this.secondaryTableStats = new MatTableDataSource<ITableData>(normalizedSecondTableData);
     } 
   }
 }

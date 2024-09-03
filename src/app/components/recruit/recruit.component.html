@@ -1,0 +1,16 @@
+<div class="root">
+  <h1 class="header"> Summon Simulator </h1>
+  <div class="container">
+    <div class="summon-container">
+      <p class="text" *ngFor="let currentInstanceUnit of currentInstanceUnits">
+        {{currentInstanceUnit.name}}
+        ({{currentInstanceUnit.rarity}})
+      </p>
+    </div>
+    <div class="button-container">
+      <p class="text"> Total Hope Luxite Spent: {{ totalHopeLuxiteSpent }}</p>
+      <button (click)="performSummon(false)"> 1x Pull </button>
+      <button (click)="performSummon(true)"> 10x Pull </button>
+    </div>
+  </div>
+</div>
