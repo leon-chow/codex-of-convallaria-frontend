@@ -2,6 +2,15 @@
   display: flex;
 }
 
+.parent {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem;
+  padding: 0.5rem;
+  width: 30rem;
+  height: 30rem;
+}
+
 .container {
   display: flex;
   justify-content: space-around;
@@ -12,7 +21,10 @@
 
 .summon-container {
   width: 30rem;
-  height: 20rem;
+  border: 1px solid black;
+  background-color: #aaa;
+  margin: 1rem;
+  padding: 0.5rem;
 }
 
 .root {
@@ -30,6 +42,7 @@
 }
 
 .text {
+  margin: 1rem;
   font-size: 1.5rem;
   color: white;
   text-shadow: 1px 1px 2px black;

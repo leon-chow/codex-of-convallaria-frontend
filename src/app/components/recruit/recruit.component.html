@@ -1,14 +1,29 @@
 <div class="root">
   <h1 class="header"> Summon Simulator </h1>
   <div class="container">
-    <div class="summon-container">
-      <p class="text" *ngFor="let currentInstanceUnit of currentInstanceUnits">
-        {{currentInstanceUnit.name}}
-        ({{currentInstanceUnit.rarity}})
-      </p>
+    <mat-form-field>
+      <mat-label>Select Banner</mat-label>
+      <mat-select [(ngModel)]="selectedBanner" name="banner" placeholder="Default">
+        @for (banner of banners; track banners) {
+          <mat-option [value]="banner">{{banner}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <div class="parent">
+      <div class="summon-container">
+        <p class="text" *ngFor="let currentInstanceUnit of currentInstanceUnits">
+          {{currentInstanceUnit.name}}
+          ({{currentInstanceUnit.rarity}})
+        </p>
+      </div>
+      <div *ngIf="totalUnits.length > 0" class="summon-container">
+        <p class="text"> Test </p>
+      </div>
     </div>
     <div class="button-container">
       <p class="text"> Total Hope Luxite Spent: {{ totalHopeLuxiteSpent }}</p>
+      <p class="text"> Pulls until next legendary: {{ softPity }}</p>
+      <p *ngIf="selectedBanner !== 'Default'" class="text"> Pulls until "{{ selectedBanner }}": {{ hardPity }}</p>
       <button (click)="performSummon(false)"> 1x Pull </button>
       <button (click)="performSummon(true)"> 10x Pull </button>
     </div>

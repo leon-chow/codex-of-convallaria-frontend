@@ -11,6 +11,13 @@ export type GACHA_RATES_TYPE = {
   [key: string]: number;
 }
 
+export const UNIT_RARITY = {
+  legendary: "legendary",
+  epic: "epic",
+  rare: "rare",
+  common: "common",
+}
+
 export const GACHA_RATES: GACHA_RATES_TYPE = {
   "legendary": 0.02,
   "epic": 0.20,
@@ -27,9 +34,51 @@ export type ALL_UNITS_TYPE = {
   [key: string]: object[];
 }
 
+export const FEATURED_UNITS = [
+  {
+    name: "Default",
+    bannerType: "single",
+  },
+  {
+    name: "Gloria",
+    bannerType: "single",
+  },
+  {
+    name: "Col & Beryl",
+    bannerType: "double", 
+  },
+  {
+    name: "Nungal & Garcia",
+    bannerType: "double", 
+  },
+  {
+    name: "Edda",
+    bannerType: "single", 
+  },
+  {
+    name: "LilyWill & Alexei",
+    bannerType: "double", 
+  },
+  {
+    name: "Simona",
+    bannerType: "single", 
+  },
+  {
+    name: "Safiyyah",
+    bannerType: "single", 
+  },
+  {
+    name: "Cocoa",
+    bannerType: "single", 
+  },
+  {
+    name: "Auguste",
+    bannerType: "single", 
+  },
+];
+
 export const ALL_UNITS: ALL_UNITS_TYPE = {
   "legendary": [
-    { name: "Safiyyah", rarity: "legendary", imageUrl: "test", spriteUrl: "test" },
     { name: "Nungal", rarity: "legendary", imageUrl: "test", spriteUrl: "test" },
     { name: "Nergel", rarity: "legendary", imageUrl: "test", spriteUrl: "test" },
     { name: "Simona", rarity: "legendary", imageUrl: "test", spriteUrl: "test" },
@@ -54,7 +103,6 @@ export const ALL_UNITS: ALL_UNITS_TYPE = {
     { name: "Beryl", rarity: "legendary", imageUrl: "test", spriteUrl: "test" },
     { name: "Samantha", rarity: "legendary", imageUrl: "test", spriteUrl: "test" },
     { name: "Miguel", rarity: "legendary", imageUrl: "test", spriteUrl: "test" },
-    { name: "Gloria", rarity: "legendary", imageUrl: "test", spriteUrl: "test" },
   ],
   "epic": [
     { name: "Nightraven", rarity: "epic", imageUrl: "test", spriteUrl: "test" },
@@ -65,7 +113,7 @@ export const ALL_UNITS: ALL_UNITS_TYPE = {
     { name: "Ballista", rarity: "epic", imageUrl: "test", spriteUrl: "test" },
     { name: "Agile Eye", rarity: "epic", imageUrl: "test", spriteUrl: "test" },
     { name: "Might", rarity: "epic", imageUrl: "test", spriteUrl: "test" },
-    { name: "Divine Grace", rarity: "4 sStar", imageUrl: "test", spriteUrl: "test" },
+    { name: "Divine Grace", rarity: "epic", imageUrl: "test", spriteUrl: "test" },
     { name: "Abyss", rarity: "epic", imageUrl: "test", spriteUrl: "test" },
     { name: "Enforcer", rarity: "epic", imageUrl: "test", spriteUrl: "test" },
     { name: "Stinger", rarity: "epic", imageUrl: "test", spriteUrl: "test" },
@@ -92,11 +140,11 @@ export const ALL_UNITS: ALL_UNITS_TYPE = {
     { name: "KA Spearman", rarity: "rare", imageUrl: "test", spriteUrl: "test" },
     { name: "KA Guard", rarity: "rare", imageUrl: "test", spriteUrl: "test" },
     { name: "KA Healer", rarity: "rare", imageUrl: "test", spriteUrl: "test" },
-    { name: "Vlder Scout", rarity: "rare", imageUrl: "test", spriteUrl: "test" },
+    { name: "Vlderian Scout", rarity: "rare", imageUrl: "test", spriteUrl: "test" },
   ],
   "common": [
     { name: "Outlaw Spearman", rarity: "common", imageUrl: "test", spriteUrl: "test" },
-    { name: "Outlaw Scout", rarity: "common", imageUrl: "test", spriteUrl: "test" },
+    { name: "Outlaw Assassin", rarity: "common", imageUrl: "test", spriteUrl: "test" },
     { name: "Outlaw Archer", rarity: "common", imageUrl: "test", spriteUrl: "test" },
     { name: "Outlaw Crossbowman", rarity: "common", imageUrl: "test", spriteUrl: "test" },
     { name: "Outlaw Guard", rarity: "common", imageUrl: "test", spriteUrl: "test" },
