@@ -1,23 +1,27 @@
 <div class="root">
   <h1 class="header"> Summon Simulator </h1>
+  <mat-form-field>
+    <mat-label>Select Banner</mat-label>
+    <mat-select [(ngModel)]="selectedBanner" (selectionChange)="this.resetSimulator()" name="banner" placeholder="Default">
+      @for (banner of banners; track banners) {
+        <mat-option [value]="banner">{{banner}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
   <div class="container">
-    <mat-form-field>
-      <mat-label>Select Banner</mat-label>
-      <mat-select [(ngModel)]="selectedBanner" name="banner" placeholder="Default">
-        @for (banner of banners; track banners) {
-          <mat-option [value]="banner">{{banner}}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
     <div class="parent">
-      <div class="summon-container">
+      <div class="summon-container" *ngIf="currentInstanceUnits.length > 0">
+        <h2> Summon results: </h2>
         <p class="text" *ngFor="let currentInstanceUnit of currentInstanceUnits">
           {{currentInstanceUnit.name}}
           ({{currentInstanceUnit.rarity}})
         </p>
       </div>
-      <div *ngIf="totalUnits.length > 0" class="summon-container">
-        <p class="text"> Test </p>
+      <div *ngIf="collectedUnits.length > 0" class="summon-container">
+        <h2> Pulled Units: </h2>
+        <p class="text" *ngFor="let collectedUnit of collectedUnits"> 
+          {{collectedUnit.count}}x {{collectedUnit.name}} ({{collectedUnit.rarity}})
+        </p>
       </div>
     </div>
     <div class="button-container">

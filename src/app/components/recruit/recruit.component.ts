@@ -16,12 +16,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 export class RecruitComponent {
 
   totalHopeLuxiteSpent: number = 0;
-  totalUnits: IUnit[] = [];
   currentInstanceUnits: IUnit[] = [];
   softPity: number = 100;
   hardPity: number = 180;
-  selectedBanner: string = "";
-  unitPool: IUnit[] = [];
+  selectedBanner: string = "Default";
+  collectedUnits: IUnit[] = [];
   banners: string[] = [];
 
   ngOnInit() {
@@ -49,7 +48,7 @@ export class RecruitComponent {
   getRandomCharacter(rarity: string) {
     const charactersOfRarity = ALL_UNITS[rarity] as IUnit[];
     let randomIndex = Math.floor(Math.random() * charactersOfRarity.length);
-    if (this.selectedBanner && rarity === UNIT_RARITY.legendary) {
+    if (this.selectedBanner !== "Default" && rarity === UNIT_RARITY.legendary) {
       const fiftyFifty = Math.floor(Math.random() * 100) + 1;
       const targetedUnitIndex = charactersOfRarity.findIndex(character => {
         return character.name.toLowerCase() === this.selectedBanner.toLowerCase();
@@ -62,6 +61,7 @@ export class RecruitComponent {
         this.softPity = 100;
         this.hardPity--;
         while (true) {
+          console.log(randomIndex);
           if (targetedUnitIndex !== randomIndex) {
             return charactersOfRarity[randomIndex]
           } else {
@@ -70,15 +70,35 @@ export class RecruitComponent {
         }
       }
     }
+    if (rarity === UNIT_RARITY.legendary) {
+      this.softPity = 100;
+      return charactersOfRarity[randomIndex];
+    }
+    if (this.selectedBanner !== "Default") {
+      this.hardPity--;
+    }
     this.softPity--;
-    this.hardPity--;
     return charactersOfRarity[randomIndex];
   }
 
-  // TODO: pick featured units 
-  selectBanner(banner: string) {
-    console.log(`selecting ${banner}`);
-    this.selectedBanner = banner;
+  populateCollectedUnits(character: IUnit) {
+    if (character.rarity === UNIT_RARITY.epic || character.rarity === UNIT_RARITY.legendary) {
+      const index = this.collectedUnits.findIndex(c => c.name === character.name) 
+      if (index !== -1) {
+        this.collectedUnits[index].count! += 1;
+      } else {
+        this.collectedUnits.push({...character, count: 1});
+      }
+    }
+    // TODO: Sort collected units
+  }
+
+  resetSimulator() {
+    this.hardPity = 180;
+    this.softPity = 100;
+    this.collectedUnits = [];
+    this.currentInstanceUnits = [];
+    this.totalHopeLuxiteSpent = 0;
   }
 
   performSummon(isMulti: boolean) {
@@ -91,7 +111,9 @@ export class RecruitComponent {
       this.totalHopeLuxiteSpent += 150;
       const rarity = this.getRandomRarity();
       const character = this.getRandomCharacter(rarity!);
+      console.log(character, rarity);
       this.currentInstanceUnits.push(character as IUnit);
+      this.populateCollectedUnits(character);
     }
   }
 }

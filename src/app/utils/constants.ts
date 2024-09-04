@@ -5,6 +5,7 @@ export interface IUnit {
   rarity: string;
   imageUrl: string;
   spriteUrl: string;
+  count?: number;
 }
 
 export type GACHA_RATES_TYPE = {
@@ -16,6 +17,13 @@ export const UNIT_RARITY = {
   epic: "epic",
   rare: "rare",
   common: "common",
+}
+
+export enum EUnitRarity {
+  "legendary" = 4,
+  "epic" = 3,
+  "rare" = 2,
+  "common" = 1,
 }
 
 export const GACHA_RATES: GACHA_RATES_TYPE = {

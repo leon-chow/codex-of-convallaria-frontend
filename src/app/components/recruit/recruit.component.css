@@ -7,7 +7,6 @@
   flex-direction: row;
   margin: 1rem;
   padding: 0.5rem;
-  width: 30rem;
   height: 30rem;
 }
 
@@ -17,6 +16,7 @@
   flex-direction: column;
   text-align: center;
   padding: 1rem;
+  width: auto;
 }
 
 .summon-container {
@@ -25,6 +25,7 @@
   background-color: #aaa;
   margin: 1rem;
   padding: 0.5rem;
+  overflow-y: auto;
 }
 
 .root {
