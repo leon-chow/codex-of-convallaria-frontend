@@ -5,11 +5,12 @@ import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-recruit',
   standalone: true,
-  imports: [CommonModule, MatSelectModule, MatInputModule, MatFormFieldModule, FormsModule],
+  imports: [CommonModule, MatSelectModule, MatInputModule, MatFormFieldModule, FormsModule, MatButton],
   templateUrl: './recruit.component.html',
   styleUrl: './recruit.component.css'
 })
@@ -48,38 +49,48 @@ export class RecruitComponent {
   getRandomCharacter(rarity: string) {
     const charactersOfRarity = ALL_UNITS[rarity] as IUnit[];
     let randomIndex = Math.floor(Math.random() * charactersOfRarity.length);
-    if (this.selectedBanner !== "Default" && rarity === UNIT_RARITY.legendary) {
-      const fiftyFifty = Math.floor(Math.random() * 100) + 1;
-      const targetedUnitIndex = charactersOfRarity.findIndex(character => {
-        return character.name.toLowerCase() === this.selectedBanner.toLowerCase();
-      });
-      if (fiftyFifty > 50) {
-        this.softPity = 100;
-        this.hardPity = 180;
-        return charactersOfRarity[targetedUnitIndex]; 
-      } else {
-        this.softPity = 100;
-        this.hardPity--;
-        while (true) {
-          console.log(randomIndex);
-          if (targetedUnitIndex !== randomIndex) {
-            return charactersOfRarity[randomIndex]
-          } else {
-            randomIndex = Math.floor(Math.random() * charactersOfRarity.length);
-          }
-        }
-      }
-    }
+
     if (rarity === UNIT_RARITY.legendary) {
-      this.softPity = 100;
-      return charactersOfRarity[randomIndex];
+      return this.handleLegendaryUnit(charactersOfRarity, randomIndex);
     }
+
     if (this.selectedBanner !== "Default") {
       this.hardPity--;
     }
+
     this.softPity--;
     return charactersOfRarity[randomIndex];
   }
+
+  handleLegendaryUnit(legendaryCharacters: IUnit[], randomNumber: number) {
+    // non targeted banner
+    if (this.selectedBanner === "Default") {
+      this.softPity = 100;
+      return legendaryCharacters[randomNumber];
+    }
+
+    // targeted banner
+    const fiftyFifty = Math.floor(Math.random() * 100) + 1;
+    const targetedUnitIndex = legendaryCharacters.findIndex(character => {
+      return character.name.toLowerCase() === this.selectedBanner.toLowerCase();
+    });
+
+    if (fiftyFifty > 50) {
+      this.softPity = 100;
+      this.hardPity = 180;
+      return legendaryCharacters[targetedUnitIndex]; 
+    } else {
+      this.softPity = 100;
+      this.hardPity--;
+      while (true) {
+        if (targetedUnitIndex !== randomNumber) {
+          return legendaryCharacters[randomNumber]
+        } else {
+          randomNumber = Math.floor(Math.random() * legendaryCharacters.length);
+        }
+      }
+    }
+  } 
 
   populateCollectedUnits(character: IUnit) {
     if (character.rarity === UNIT_RARITY.epic || character.rarity === UNIT_RARITY.legendary) {
@@ -91,6 +102,11 @@ export class RecruitComponent {
       }
     }
     // TODO: Sort collected units
+  }
+
+  selectBanner() {
+    this.resetSimulator();
+    
   }
 
   resetSimulator() {
@@ -111,7 +127,7 @@ export class RecruitComponent {
       this.totalHopeLuxiteSpent += 150;
       const rarity = this.getRandomRarity();
       const character = this.getRandomCharacter(rarity!);
-      console.log(character, rarity);
+      console.log(character.name, rarity);
       this.currentInstanceUnits.push(character as IUnit);
       this.populateCollectedUnits(character);
     }

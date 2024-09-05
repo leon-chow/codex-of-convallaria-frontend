@@ -46,42 +46,68 @@ export const FEATURED_UNITS = [
   {
     name: "Default",
     bannerType: "single",
+    imageUrl: "test", 
+    spriteUrl: "test",
   },
   {
     name: "Gloria",
     bannerType: "single",
+    imageUrl: "test", 
+    spriteUrl: "test",
   },
   {
     name: "Col & Beryl",
     bannerType: "double", 
+    imageUrl: "test", 
+    spriteUrl: "test",
   },
   {
     name: "Nungal & Garcia",
     bannerType: "double", 
+    imageUrl: "test", 
+    spriteUrl: "test",
   },
   {
     name: "Edda",
     bannerType: "single", 
+    imageUrl: "test", 
+    spriteUrl: "test",
   },
   {
     name: "LilyWill & Alexei",
     bannerType: "double", 
+    imageUrl: "test", 
+    spriteUrl: "test",
   },
   {
     name: "Simona",
     bannerType: "single", 
+    imageUrl: "test", 
+    spriteUrl: "test",
+  },
+  {
+    name: "LilyWill & Momo",
+    bannerType: "double", 
+    imageUrl: "test", 
+    spriteUrl: "test",
   },
   {
     name: "Safiyyah",
     bannerType: "single", 
+    imageUrl: "test", 
+    spriteUrl: "test",
   },
   {
     name: "Cocoa",
     bannerType: "single", 
+    imageUrl: "test", 
+    spriteUrl: "test",
   },
   {
     name: "Auguste",
     bannerType: "single", 
+    imageUrl: "test", 
+    spriteUrl: "test",
   },
 ];
 
