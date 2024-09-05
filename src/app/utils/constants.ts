@@ -44,18 +44,12 @@ export type ALL_UNITS_TYPE = {
 
 export const FEATURED_UNITS = [
   {
-    name: "Default",
-    bannerType: "single",
-    imageUrl: "test", 
-    spriteUrl: "test",
-  },
-  {
     name: "Gloria",
-    bannerType: "single",
+    bannerType: "debut",
     imageUrl: "test", 
     spriteUrl: "test",
   },
-  {
+  /* {
     name: "Col & Beryl",
     bannerType: "double", 
     imageUrl: "test", 
@@ -66,52 +60,52 @@ export const FEATURED_UNITS = [
     bannerType: "double", 
     imageUrl: "test", 
     spriteUrl: "test",
-  },
+  }, */
   {
     name: "Edda",
-    bannerType: "single", 
+    bannerType: "debut", 
     imageUrl: "test", 
     spriteUrl: "test",
   },
-  {
+  /* {
     name: "LilyWill & Alexei",
     bannerType: "double", 
     imageUrl: "test", 
     spriteUrl: "test",
-  },
+  }, */
   {
     name: "Simona",
-    bannerType: "single", 
+    bannerType: "debut", 
     imageUrl: "test", 
     spriteUrl: "test",
   },
-  {
+  /* {
     name: "LilyWill & Momo",
     bannerType: "double", 
     imageUrl: "test", 
     spriteUrl: "test",
-  },
+  }, */
   {
     name: "Safiyyah",
-    bannerType: "single", 
+    bannerType: "debut", 
     imageUrl: "test", 
     spriteUrl: "test",
   },
   {
     name: "Cocoa",
-    bannerType: "single", 
+    bannerType: "debut", 
     imageUrl: "test", 
     spriteUrl: "test",
   },
   {
     name: "Auguste",
-    bannerType: "single", 
+    bannerType: "debut", 
     imageUrl: "test", 
     spriteUrl: "test",
   },
 ];
 
-export const ALL_UNITS: ALL_UNITS_TYPE = {
+export const ALL_STANDARD_UNITS: ALL_UNITS_TYPE = {
   "legendary": [
     { name: "Nungal", rarity: "legendary", imageUrl: "test", spriteUrl: "test" },
     { name: "Nergel", rarity: "legendary", imageUrl: "test", spriteUrl: "test" },
