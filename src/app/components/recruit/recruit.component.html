@@ -25,9 +25,9 @@
       </div>
     </div>
     <div class="button-container">
-      <p class="text"> Total Hope Luxite Spent: {{ totalHopeLuxiteSpent }}</p>
+      <p class="text"> Total Hope Luxite Spent: {{ totalHopeLuxiteSpent }} ({{ totalHopeLuxiteSpent / 1500 }} multis) </p>
       <p class="text"> Pulls until next legendary: {{ softPity }}</p>
-      <p hidden="selectedBanner === 'Default'" class="text"> Pulls until "{{ selectedBanner }}": {{ hardPity }}</p>
+      <p *ngIf="selectedBanner !== 'Default'" class="text"> Pulls until "{{ selectedBanner }}": {{ hardPity }}</p>
       <button mat-flat-button (click)="performSummon(false)"> 1x Pull </button>
       <button mat-flat-button (click)="performSummon(true)"> 10x Pull </button>
     </div>

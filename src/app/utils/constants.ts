@@ -19,11 +19,15 @@ export const UNIT_RARITY = {
   common: "common",
 }
 
-export enum EUnitRarity {
-  "legendary" = 4,
-  "epic" = 3,
-  "rare" = 2,
-  "common" = 1,
+type RarityRank = {
+  [key: string]: number;
+}
+
+export const RarityRanking: RarityRank = {
+  "legendary": 4,
+  "epic": 3,
+  "rare": 2,
+  "common": 1,
 }
 
 export const GACHA_RATES: GACHA_RATES_TYPE = {
@@ -34,8 +38,8 @@ export const GACHA_RATES: GACHA_RATES_TYPE = {
 }
 
 export const PITY = {
-  global: 100,
-  destined: 180,
+  soft: 100,
+  hard: 180,
 }
 
 export type ALL_UNITS_TYPE = {

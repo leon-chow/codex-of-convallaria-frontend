@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ALL_STANDARD_UNITS, FEATURED_UNITS, GACHA_RATES, IUnit, UNIT_RARITY } from '../../utils/constants';
+import { ALL_STANDARD_UNITS, RarityRanking, FEATURED_UNITS, GACHA_RATES, GACHA_RATES_TYPE, IUnit, PITY, UNIT_RARITY } from '../../utils/constants';
 import { CommonModule } from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
@@ -19,8 +19,8 @@ export class RecruitComponent {
 
   totalHopeLuxiteSpent: number = 0;
   currentInstanceUnits: IUnit[] = [];
-  softPity: number = 100;
-  hardPity: number = 180;
+  softPity: number = PITY.soft;
+  hardPity: number = PITY.hard;
   selectedBanner: string = "Default";
   collectedUnits: IUnit[] = [];
   banners: string[] = [];
@@ -67,7 +67,7 @@ export class RecruitComponent {
   handleLegendaryUnit(legendaryCharacters: IUnit[], randomNumber: number) {
     // non targeted banner
     if (this.selectedBanner === "Default") {
-      this.softPity = 100;
+      this.softPity = PITY.soft;
       return legendaryCharacters[randomNumber];
     }
 
@@ -78,11 +78,11 @@ export class RecruitComponent {
     });
 
     if (fiftyFifty > 50) {
-      this.softPity = 100;
-      this.hardPity = 180;
+      this.softPity = PITY.soft;
+      this.hardPity = PITY.hard;
       return legendaryCharacters[targetedUnitIndex]; 
     } else {
-      this.softPity = 100;
+      this.softPity = PITY.soft;
       this.hardPity--;
       while (true) {
         if (targetedUnitIndex !== randomNumber) {
@@ -92,7 +92,25 @@ export class RecruitComponent {
         }
       }
     }
-  } 
+  }
+  
+  sortCollectedUnits() {
+    this.collectedUnits.sort((a: IUnit, b: IUnit) => {
+      if (a.name === this.selectedBanner && b.name !== this.selectedBanner) {
+        return -1;
+      } 
+      if (b.name === this.selectedBanner && a.name !== this.selectedBanner) {
+        return 1;
+      }
+      const rarityComparison = RarityRanking[b.rarity] - RarityRanking[a.rarity];
+
+      if (rarityComparison === 0) {
+        return a.name.localeCompare(b.name);
+      }
+
+      return rarityComparison;
+    })
+  }
 
   populateCollectedUnits(character: IUnit) {
     if (character.rarity === UNIT_RARITY.epic || character.rarity === UNIT_RARITY.legendary) {
@@ -103,13 +121,13 @@ export class RecruitComponent {
         this.collectedUnits.push({...character, count: 1});
       }
     }
+    this.sortCollectedUnits();
   }
 
   selectBanner() {
     if (this.selectedBanner === "Default") {
       return;
     }
-    console.log(this.selectedBanner);
     this.resetSimulator();
     for (const unit of FEATURED_UNITS) {
       this.bannerUnitPool["legendary"].push({
@@ -125,8 +143,8 @@ export class RecruitComponent {
   }
 
   resetSimulator() {
-    this.hardPity = 180;
-    this.softPity = 100;
+    this.hardPity = PITY.hard;
+    this.softPity = PITY.soft;
     this.collectedUnits = [];
     this.currentInstanceUnits = [];
     this.totalHopeLuxiteSpent = 0;
