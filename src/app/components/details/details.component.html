@@ -1,10 +1,10 @@
 <div class="root" *ngIf="activeCharacter">
-  <img class="background" src="../../../assets/sword_of_convallaria_tavern_background.jpg" />
+  <img class="background" src="assets/sword_of_convallaria_tavern_background.jpg" />
   <div class="title">
     <h1> {{ activeCharacter.name }} </h1>
   </div>
   <div class="main-content">
-    <img class="img" src="../../../assets/{{activeCharacter.name | lowercase }}_details.png"> 
+    <img class="img" src="assets/{{activeCharacter.name | lowercase }}_details.png"> 
     <div class="tables">
       <div class="stats-table">
         <mat-table *ngIf="primaryTableStats" [dataSource]="primaryTableStats">

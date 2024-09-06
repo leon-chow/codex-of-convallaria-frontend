@@ -5,8 +5,8 @@ import { DetailsComponent } from './components/details/details.component';
 import { RecruitComponent } from './components/recruit/recruit.component';
 
 export const routes: Routes = [
-  { path: "codex-of-convallaria", component: HomeComponent },
-  { path: "codex-of-convallaria/characters", component: CollectionComponent, data: {type: "characters"}},
-  { path: "codex-of-convallaria/characters/:id", component: DetailsComponent },
-  { path: "codex-of-convallaria/recruit", component: RecruitComponent }
+  { path: "", component: HomeComponent },
+  { path: "characters", component: CollectionComponent, data: {type: "characters"}},
+  { path: "characters/:id", component: DetailsComponent },
+  { path: "recruit", component: RecruitComponent }
 ];
