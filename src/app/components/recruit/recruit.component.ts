@@ -32,6 +32,10 @@ export class RecruitComponent {
     });
   }
 
+  getFormattedNumber(num: number) {
+    return num.toLocaleString('en-US');
+  }
+
   getRandomRarity() {
     const randomValue = Math.random();
     let cumulativeProbability = 0;
@@ -71,11 +75,18 @@ export class RecruitComponent {
       return legendaryCharacters[randomNumber];
     }
 
-    // targeted banner
-    const fiftyFifty = Math.floor(Math.random() * 100) + 1;
     const targetedUnitIndex = legendaryCharacters.findIndex(character => {
       return character.name.toLowerCase() === this.selectedBanner.toLowerCase();
     });
+    
+    // hit hard pity
+    if (this.hardPity === 1) {
+      this.hardPity = 180;
+      return legendaryCharacters[targetedUnitIndex];
+    }
+    
+    // targeted banner
+    const fiftyFifty = Math.floor(Math.random() * 100) + 1;
 
     if (fiftyFifty > 50) {
       this.softPity = PITY.soft;
@@ -161,7 +172,6 @@ export class RecruitComponent {
       this.totalHopeLuxiteSpent += 150;
       const rarity = this.getRandomRarity();
       const character = this.getRandomCharacter(rarity!);
-      console.log(character.name, rarity);
       this.currentInstanceUnits.push(character as IUnit);
       this.populateCollectedUnits(character);
     }

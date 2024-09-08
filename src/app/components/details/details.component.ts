@@ -54,7 +54,6 @@ export class DetailsComponent {
     }).filter(data => this.secondaryTableKeys.includes(data.key));
     tableData.forEach(entry => {
       entry.key = normalizeAndCapitalizeText(entry.key);
-      console.log(entry.value);
     });
     // TODO: Move base stats first, then abilities and then recommendations
     return tableData
