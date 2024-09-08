@@ -117,7 +117,6 @@ export const ALL_STANDARD_UNITS: ALL_UNITS_TYPE = {
     { name: "Leonide", rarity: "legendary", imageUrl: "test", spriteUrl: "test" },
     { name: "Iggy", rarity: "legendary", imageUrl: "test", spriteUrl: "test" },
     { name: "Magnus", rarity: "legendary", imageUrl: "test", spriteUrl: "test" },
-    { name: "Edda", rarity: "legendary", imageUrl: "test", spriteUrl: "test" },
     { name: "Garcia", rarity: "legendary", imageUrl: "test", spriteUrl: "test" },
     { name: "Momo", rarity: "legendary", imageUrl: "test", spriteUrl: "test" },
     { name: "Inanna", rarity: "legendary", imageUrl: "test", spriteUrl: "test" },
