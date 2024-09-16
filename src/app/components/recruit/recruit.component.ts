@@ -55,7 +55,6 @@ export class RecruitComponent {
 
   getRandomCharacter(rarity: string) {
     const charactersOfRarity = this.bannerUnitPool[rarity] as IUnit[];
-    console.log(charactersOfRarity);
     let randomIndex = Math.floor(Math.random() * charactersOfRarity.length);
 
     if (rarity === UNIT_RARITY.legendary) {
@@ -180,7 +179,6 @@ export class RecruitComponent {
     if (this.selectedBanner.includes("&")) {
       this.destinedBannerLabel = this.selectedBanner.replace("&", "or");
     }
-    console.log(this.bannerUnitPool);
   }
 
   resetSimulator() {
