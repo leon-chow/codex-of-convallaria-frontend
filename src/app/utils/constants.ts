@@ -53,50 +53,62 @@ export const FEATURED_UNITS = [
     imageUrl: "test", 
     spriteUrl: "test",
   },
-  /* {
+  {
     name: "Col & Beryl",
-    bannerType: "double", 
+    bannerType: "destined", 
+    imageUrl: "test", 
+    spriteUrl: "test",
+  },
+  {
+    name: "Samantha & Dantalion",
+    bannerType: "destined", 
     imageUrl: "test", 
     spriteUrl: "test",
   },
   {
     name: "Nungal & Garcia",
-    bannerType: "double", 
+    bannerType: "destined", 
     imageUrl: "test", 
     spriteUrl: "test",
-  }, */
+  },
   {
     name: "Edda",
     bannerType: "debut", 
     imageUrl: "test", 
     spriteUrl: "test",
   },
-  /* {
+  {
     name: "LilyWill & Alexei",
-    bannerType: "double", 
+    bannerType: "destined", 
     imageUrl: "test", 
     spriteUrl: "test",
-  }, */
+  },
   {
     name: "Simona",
     bannerType: "debut", 
     imageUrl: "test", 
     spriteUrl: "test",
   },
-  /* {
-    name: "LilyWill & Momo",
-    bannerType: "double", 
-    imageUrl: "test", 
-    spriteUrl: "test",
-  }, */
   {
-    name: "Safiyyah",
-    bannerType: "debut", 
+    name: "NonoWill & Momo",
+    bannerType: "destined", 
     imageUrl: "test", 
     spriteUrl: "test",
   },
   {
     name: "Cocoa",
+    bannerType: "debut", 
+    imageUrl: "test", 
+    spriteUrl: "test",
+  },
+  {
+    name: "Acambe",
+    bannerType: "debut",
+    imageUrl: "test",
+    spriteUrl: "test"
+  },
+  {
+    name: "Safiyyah",
     bannerType: "debut", 
     imageUrl: "test", 
     spriteUrl: "test",
