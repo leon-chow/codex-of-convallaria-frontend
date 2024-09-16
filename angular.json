@@ -16,7 +16,7 @@
             "baseHref": "/codex-of-convallaria-frontend/",
             "outputPath": "docs",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+            "browser": "",
             "polyfills": [
               "zone.js"
             ],
