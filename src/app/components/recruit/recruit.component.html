@@ -27,7 +27,8 @@
     <div class="button-container">
       <p class="text"> Total Hope Luxite Spent: {{ totalHopeLuxiteSpent }} ({{ getFormattedNumber(totalHopeLuxiteSpent / 150) }} {{totalHopeLuxiteSpent === 150 ? 'pull' : 'pulls'}}) </p>
       <p class="text"> Pulls until next legendary: {{ softPity }}</p>
-      <p *ngIf="selectedBanner !== 'Default'" class="text"> Pulls until "{{ selectedBanner }}": {{ hardPity }}</p>
+      <p *ngIf="selectedBanner !== 'Default' && !selectedBanner.includes('&')" class="text"> Pulls until "{{ selectedBanner }}": {{ hardPity }}</p>
+      <p *ngIf="selectedBanner !== 'Default' && selectedBanner.includes('&')" class="text"> Pulls until "{{ destinedBannerLabel }}": {{ hardPity }}</p>
       <button mat-flat-button (click)="performSummon(false)"> 1x Pull </button>
       <button mat-flat-button (click)="performSummon(true)"> 10x Pull </button>
     </div>
