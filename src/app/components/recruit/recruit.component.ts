@@ -55,7 +55,6 @@ export class RecruitComponent {
 
   getRandomCharacter(rarity: string) {
     const charactersOfRarity = this.bannerUnitPool[rarity] as IUnit[];
-    console.log(charactersOfRarity);
     let randomIndex = Math.floor(Math.random() * charactersOfRarity.length);
 
     if (rarity === UNIT_RARITY.legendary) {
@@ -96,20 +95,23 @@ export class RecruitComponent {
     if (fiftyFifty > 50) {
       this.softPity = PITY.soft;
       this.hardPity = PITY.hard;
-      // destined banner
-      if (this.selectedBanner.includes("&")) {
-        return legendaryCharacters[targetedUnitIndex!];
-      }
       return legendaryCharacters[targetedUnitIndex!]; 
     } else {
       this.softPity = PITY.soft;
       this.hardPity--;
       while (true) {
-        if (targetedUnitIndex !== randomNumber) {
-          return legendaryCharacters[randomNumber]
+        if (this.selectedBanner.includes("&")) {
+          const doubleBannerRegex = /\s*&\s*/;
+          const result = this.selectedBanner.split(doubleBannerRegex);
+          if (legendaryCharacters[randomNumber].name !== result[0] && legendaryCharacters[randomNumber!].name !== result[1]) {
+            return legendaryCharacters[randomNumber];
+          } 
         } else {
-          randomNumber = Math.floor(Math.random() * legendaryCharacters.length);
+          if (targetedUnitIndex !== randomNumber) {
+            return legendaryCharacters[randomNumber]
+          } 
         }
+        randomNumber = Math.floor(Math.random() * legendaryCharacters.length);
       }
     }
   }
