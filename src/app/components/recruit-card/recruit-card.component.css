@@ -22,7 +22,7 @@
   object-fit: cover;
   top: 0;
   width: 100%;
-  transform: translateY(2%);
+  transform: translateY(3%);
 }
 
 .image-pixel {
@@ -40,10 +40,9 @@
   z-index: 100;
 }
 
-.name {
+.name, .name-fit {
   position: absolute;
   border-radius: .5rem;
-  font-size: 1rem;
   font-weight: 700;
   line-height: .8rem;
   padding: 0.25rem 0;
@@ -56,6 +55,11 @@
   background-color: white;
   border: 1px solid black;
   bottom: -12.5%;
+  font-size: 0.75rem;
+}
+
+.name-fit {
+  bottom: -2.5%;
 }
 
 .image-2d-container {
@@ -63,9 +67,17 @@
 }
 
 .image-2d {
-  position: relative;
   width: 225%;
   bottom: 60%;
-  left: 0%;
   transform: translate(-30%, 10%);
+}
+
+.image-pixel-fit {
+  width: 7rem;
+  transform: translate(-50%, -100%);
+}
+
+.image-2d-fit {
+  width: 400%;
+  transform: translate(-35%, -10%);
 }

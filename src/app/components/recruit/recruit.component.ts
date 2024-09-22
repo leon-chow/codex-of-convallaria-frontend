@@ -171,8 +171,9 @@ export class RecruitComponent {
         this.bannerUnitPool["legendary"].push({
           name: unit.name,
           rarity: "legendary",
-          imageUrl: "test",
-          spriteUrl: "test"
+          imageUrl: unit.imageUrl,
+          spriteUrl: unit.spriteUrl,
+          class: unit.class
         });
       }
       if (unit.name === this.selectedBanner) {

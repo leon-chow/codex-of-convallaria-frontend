@@ -9,11 +9,12 @@
     </mat-select>
   </mat-form-field>
   <div class="container">
-    <div class="parent">
-      <h2> Summon results: </h2>
-      <app-recruit-card *ngFor="let currentInstanceUnit of currentInstanceUnits" [imageUrl]="currentInstanceUnit.imageUrl" [spriteUrl]="currentInstanceUnit.spriteUrl" [unitClass]="currentInstanceUnit.class" [rarity]="currentInstanceUnit.rarity" [characterName]="currentInstanceUnit.name"> </app-recruit-card>
-      <div *ngIf="collectedUnits.length > 0">
-        <h2> Pulled Units: </h2>
+    <div class="summon-log">
+      <div class="parent">
+        <app-recruit-card *ngFor="let currentInstanceUnit of currentInstanceUnits" [imageUrl]="currentInstanceUnit.imageUrl" [spriteUrl]="currentInstanceUnit.spriteUrl" [unitClass]="currentInstanceUnit.class" [rarity]="currentInstanceUnit.rarity" [characterName]="currentInstanceUnit.name"> </app-recruit-card>
+      </div>
+      <div class="summoned-units">
+        <h2 *ngIf="collectedUnits.length > 0"> Pulled Units: </h2>
         <p class="text" *ngFor="let collectedUnit of collectedUnits"> 
           {{collectedUnit.count}}x {{collectedUnit.name}} ({{collectedUnit.rarity}})
         </p>

@@ -1,14 +1,14 @@
-<div class="root">
+<div class="root" *ngIf="imageUrl">
   <div class="container">
     <div class="image-2d-container">
       <img class="image-banner-background" src="{{getBannerRarityBackgroundImage()}}">
     </div>
     <img class="image-banner" src="{{getBannerRarityImage()}}">
-    <p class="name"> {{ characterName }} </p> 
-    <div *ngIf="imageUrl && imageUrl !== 'test'" class="image-2d-container">
-      <img class="image-2d" src="{{imageUrl}}"> 
+    <p class="name" (load)="check2DImageSize($event)" [class.name-fit]="image2DIsLarge"> {{ characterName }} </p> 
+    <div class="image-2d-container">
+      <img (load)="check2DImageSize($event)" #image2D class="image-2d" [class.image-2d-fit]="image2DIsLarge" src="{{imageUrl}}"> 
     </div>
     <img class="class-symbol" src="{{getClassSymbol()}}">
-    <img *ngIf="spriteUrl && spriteUrl !== 'test'" class="image-pixel" src="{{spriteUrl}}"> 
+    <img (load)="check2DImageSize($event)" [class.image-pixel-fit]="image2DIsLarge" class="image-pixel" src="{{spriteUrl}}"> 
   </div>
 </div>
