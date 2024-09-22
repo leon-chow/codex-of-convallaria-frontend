@@ -12,12 +12,9 @@
     <div class="parent">
       <div class="summon-container" *ngIf="currentInstanceUnits.length > 0">
         <h2> Summon results: </h2>
-        <p class="text" *ngFor="let currentInstanceUnit of currentInstanceUnits">
-          {{currentInstanceUnit.name}}
-          ({{currentInstanceUnit.rarity}})
-        </p>
+        <app-recruit-card *ngFor="let currentInstanceUnit of currentInstanceUnits" [imageUrl]="currentInstanceUnit.imageUrl" [spriteUrl]="currentInstanceUnit.spriteUrl" [unitClass]="currentInstanceUnit.class" [rarity]="currentInstanceUnit.rarity" [characterName]="currentInstanceUnit.name"> </app-recruit-card>
       </div>
-      <div *ngIf="collectedUnits.length > 0" class="summon-container">
+      <div *ngIf="collectedUnits.length > 0">
         <h2> Pulled Units: </h2>
         <p class="text" *ngFor="let collectedUnit of collectedUnits"> 
           {{collectedUnit.count}}x {{collectedUnit.name}} ({{collectedUnit.rarity}})

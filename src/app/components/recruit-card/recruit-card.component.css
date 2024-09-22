@@ -1,0 +1,69 @@
+.root {
+  display: inline-block;
+  margin: 1rem;
+}
+
+.container {
+  position: relative;
+  width: 5.5rem;
+}
+
+.image-banner {
+  position: absolute;
+  left: 0;
+  object-fit: cover;
+  top: 0;
+  z-index: 100;
+}
+
+.image-banner-background {
+  position: absolute;
+  left: 0;
+  object-fit: cover;
+  top: 0;
+  width: 100%;
+  transform: translateY(2%);
+}
+
+.image-pixel {
+  position: absolute;
+  transform: translate(-47.5%, -75%);
+  width: 8rem;
+  z-index: 100;
+}
+
+.class-symbol {
+  position: absolute;
+  width: 2rem;
+  left: 35%;
+  top: 0;
+  z-index: 100;
+}
+
+.name {
+  border-radius: .5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: .8rem;
+  word-wrap: normal;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  z-index: 100;
+  text-overflow: ellipsis;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  bottom: -1400%;
+}
+
+.image-2d-container {
+  overflow: hidden;
+}
+
+.image-2d {
+  position: relative;
+  width: 225%;
+  bottom: 60%;
+  left: 0%;
+  transform: translate(-30%, 10%);
+}

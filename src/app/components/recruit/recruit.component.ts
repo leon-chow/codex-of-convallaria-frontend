@@ -7,16 +7,16 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatButton } from '@angular/material/button';
 import * as _ from "lodash";
+import { RecruitCardComponent } from '../recruit-card/recruit-card.component';
 
 @Component({
   selector: 'app-recruit',
   standalone: true,
-  imports: [CommonModule, MatSelectModule, MatInputModule, MatFormFieldModule, FormsModule, MatButton],
+  imports: [CommonModule, MatSelectModule, MatInputModule, MatFormFieldModule, FormsModule, MatButton, RecruitCardComponent],
   templateUrl: './recruit.component.html',
   styleUrl: './recruit.component.css'
 })
 export class RecruitComponent {
-
   totalHopeLuxiteSpent: number = 0;
   currentInstanceUnits: IUnit[] = [];
   softPity: number = PITY.soft;
