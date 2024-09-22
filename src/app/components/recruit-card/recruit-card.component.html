@@ -4,11 +4,11 @@
       <img class="image-banner-background" src="{{getBannerRarityBackgroundImage()}}">
     </div>
     <img class="image-banner" src="{{getBannerRarityImage()}}">
-    <img class="class-symbol" src="{{getClassSymbol()}}">
-    <div class="image-2d-container">
+    <p class="name"> {{ characterName }} </p> 
+    <div *ngIf="imageUrl && imageUrl !== 'test'" class="image-2d-container">
       <img class="image-2d" src="{{imageUrl}}"> 
     </div>
-    <img class="image-pixel" src="{{spriteUrl}}"> 
-    <p class="name"> {{ characterName }} </p> 
+    <img class="class-symbol" src="{{getClassSymbol()}}">
+    <img *ngIf="spriteUrl && spriteUrl !== 'test'" class="image-pixel" src="{{spriteUrl}}"> 
   </div>
 </div>
