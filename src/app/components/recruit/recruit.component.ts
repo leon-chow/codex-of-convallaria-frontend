@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ALL_STANDARD_UNITS, RarityRanking, FEATURED_UNITS, GACHA_RATES, GACHA_RATES_TYPE, IUnit, PITY, UNIT_RARITY } from '../../utils/constants';
+import { ALL_STANDARD_UNITS, RarityRanking, FEATURED_UNITS, GACHA_RATES, GACHA_RATES_TYPE, IUnit, PITY, UNIT_RARITY, ALL_UNITS_TYPE } from '../../utils/constants';
 import { CommonModule } from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
@@ -7,16 +7,16 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatButton } from '@angular/material/button';
 import * as _ from "lodash";
+import { RecruitCardComponent } from '../recruit-card/recruit-card.component';
 
 @Component({
   selector: 'app-recruit',
   standalone: true,
-  imports: [CommonModule, MatSelectModule, MatInputModule, MatFormFieldModule, FormsModule, MatButton],
+  imports: [CommonModule, MatSelectModule, MatInputModule, MatFormFieldModule, FormsModule, MatButton, RecruitCardComponent],
   templateUrl: './recruit.component.html',
   styleUrl: './recruit.component.css'
 })
 export class RecruitComponent {
-
   totalHopeLuxiteSpent: number = 0;
   currentInstanceUnits: IUnit[] = [];
   softPity: number = PITY.soft;
@@ -25,7 +25,9 @@ export class RecruitComponent {
   destinedBannerLabel: string = "";
   collectedUnits: IUnit[] = [];
   banners: string[] = [];
-  bannerUnitPool = _.cloneDeep(ALL_STANDARD_UNITS);
+  legendaryCounter: number = 0;
+  totalSummonsCounter: number = 0;
+  bannerUnitPool: ALL_UNITS_TYPE = _.cloneDeep(ALL_STANDARD_UNITS);
 
   ngOnInit() {
     FEATURED_UNITS.forEach(unit => {
@@ -71,6 +73,7 @@ export class RecruitComponent {
 
   handleLegendaryUnit(legendaryCharacters: IUnit[], randomNumber: number) {
     // non targeted banner
+    this.legendaryCounter++;
     if (this.selectedBanner === "Default") {
       this.softPity = PITY.soft;
       return legendaryCharacters[randomNumber];
@@ -95,20 +98,23 @@ export class RecruitComponent {
     if (fiftyFifty > 50) {
       this.softPity = PITY.soft;
       this.hardPity = PITY.hard;
-      // destined banner
-      if (this.selectedBanner.includes("&")) {
-        return legendaryCharacters[targetedUnitIndex!];
-      }
       return legendaryCharacters[targetedUnitIndex!]; 
     } else {
       this.softPity = PITY.soft;
       this.hardPity--;
       while (true) {
-        if (targetedUnitIndex !== randomNumber) {
-          return legendaryCharacters[randomNumber]
+        if (this.selectedBanner.includes("&")) {
+          const doubleBannerRegex = /\s*&\s*/;
+          const result = this.selectedBanner.split(doubleBannerRegex);
+          if (legendaryCharacters[randomNumber].name !== result[0] && legendaryCharacters[randomNumber!].name !== result[1]) {
+            return legendaryCharacters[randomNumber];
+          } 
         } else {
-          randomNumber = Math.floor(Math.random() * legendaryCharacters.length);
+          if (targetedUnitIndex !== randomNumber) {
+            return legendaryCharacters[randomNumber]
+          } 
         }
+        randomNumber = Math.floor(Math.random() * legendaryCharacters.length);
       }
     }
   }
@@ -168,8 +174,9 @@ export class RecruitComponent {
         this.bannerUnitPool["legendary"].push({
           name: unit.name,
           rarity: "legendary",
-          imageUrl: "test",
-          spriteUrl: "test"
+          imageUrl: unit.imageUrl,
+          spriteUrl: unit.spriteUrl,
+          class: unit.class
         });
       }
       if (unit.name === this.selectedBanner) {
@@ -197,6 +204,7 @@ export class RecruitComponent {
       loops = 10;
     }
     for (let i = 0; i < loops; i++) {
+      this.totalSummonsCounter++;
       this.totalHopeLuxiteSpent += 150;
       const rarity = this.getRandomRarity();
       const character = this.getRandomCharacter(rarity);

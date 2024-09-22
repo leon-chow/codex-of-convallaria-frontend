@@ -9,16 +9,12 @@
     </mat-select>
   </mat-form-field>
   <div class="container">
-    <div class="parent">
-      <div class="summon-container" *ngIf="currentInstanceUnits.length > 0">
-        <h2> Summon results: </h2>
-        <p class="text" *ngFor="let currentInstanceUnit of currentInstanceUnits">
-          {{currentInstanceUnit.name}}
-          ({{currentInstanceUnit.rarity}})
-        </p>
+    <div class="summon-log">
+      <div class="parent">
+        <app-recruit-card *ngFor="let currentInstanceUnit of currentInstanceUnits" [imageUrl]="currentInstanceUnit.imageUrl" [spriteUrl]="currentInstanceUnit.spriteUrl" [unitClass]="currentInstanceUnit.class" [rarity]="currentInstanceUnit.rarity" [characterName]="currentInstanceUnit.name"> </app-recruit-card>
       </div>
-      <div *ngIf="collectedUnits.length > 0" class="summon-container">
-        <h2> Pulled Units: </h2>
+      <div class="summoned-units">
+        <h2 *ngIf="collectedUnits.length > 0"> Pulled Units: </h2>
         <p class="text" *ngFor="let collectedUnit of collectedUnits"> 
           {{collectedUnit.count}}x {{collectedUnit.name}} ({{collectedUnit.rarity}})
         </p>
@@ -27,6 +23,8 @@
     <div class="button-container">
       <p class="text"> Total Hope Luxite Spent: {{ totalHopeLuxiteSpent }} ({{ getFormattedNumber(totalHopeLuxiteSpent / 150) }} {{totalHopeLuxiteSpent === 150 ? 'pull' : 'pulls'}}) </p>
       <p class="text"> Pulls until next legendary: {{ softPity }}</p>
+      <p class="text"> Number of legendaries obtained: {{ legendaryCounter }}</p>
+      <p class="text"> Total Legendary Rate: {{ ((legendaryCounter / totalSummonsCounter) * 100 | number: '1.2-2') || '0.00' }}%</p>
       <p *ngIf="selectedBanner !== 'Default' && !selectedBanner.includes('&')" class="text"> Pulls until "{{ selectedBanner }}": {{ hardPity }}</p>
       <p *ngIf="selectedBanner !== 'Default' && selectedBanner.includes('&')" class="text"> Pulls until "{{ destinedBannerLabel }}": {{ hardPity }}</p>
       <button mat-flat-button (click)="performSummon(false)"> 1x Pull </button>

@@ -1,0 +1,83 @@
+.root {
+  margin: 1rem;
+  display: inline-block;
+}
+
+.container {
+  position: relative;
+  width: 5.5rem;
+}
+
+.image-banner {
+  position: absolute;
+  left: 0;
+  object-fit: cover;
+  top: 0;
+  z-index: 100;
+}
+
+.image-banner-background {
+  position: absolute;
+  left: 0;
+  object-fit: cover;
+  top: 0;
+  width: 100%;
+  transform: translateY(3%);
+}
+
+.image-pixel {
+  position: absolute;
+  transform: translate(-47.5%, -75%);
+  width: 8rem;
+  z-index: 100;
+}
+
+.class-symbol {
+  position: absolute;
+  width: 2rem;
+  left: 35%;
+  top: 0;
+  z-index: 100;
+}
+
+.name, .name-fit {
+  position: absolute;
+  border-radius: .5rem;
+  font-weight: 700;
+  line-height: .8rem;
+  padding: 0.25rem 0;
+  word-wrap: normal;
+  text-align: center;
+  width: 99%;
+  z-index: 1000;
+  text-overflow: ellipsis;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  bottom: -12.5%;
+  font-size: 0.75rem;
+}
+
+.name-fit {
+  bottom: -2.5%;
+}
+
+.image-2d-container {
+  overflow: hidden;
+}
+
+.image-2d {
+  width: 225%;
+  bottom: 60%;
+  transform: translate(-30%, 10%);
+}
+
+.image-pixel-fit {
+  width: 7rem;
+  transform: translate(-50%, -100%);
+}
+
+.image-2d-fit {
+  width: 400%;
+  transform: translate(-35%, -10%);
+}
