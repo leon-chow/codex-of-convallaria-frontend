@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ALL_STANDARD_UNITS, RarityRanking, FEATURED_UNITS, GACHA_RATES, GACHA_RATES_TYPE, IUnit, PITY, UNIT_RARITY } from '../../utils/constants';
+import { ALL_STANDARD_UNITS, RarityRanking, FEATURED_UNITS, GACHA_RATES, GACHA_RATES_TYPE, IUnit, PITY, UNIT_RARITY, ALL_UNITS_TYPE } from '../../utils/constants';
 import { CommonModule } from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
@@ -25,7 +25,9 @@ export class RecruitComponent {
   destinedBannerLabel: string = "";
   collectedUnits: IUnit[] = [];
   banners: string[] = [];
-  bannerUnitPool = _.cloneDeep(ALL_STANDARD_UNITS);
+  legendaryCounter: number = 0;
+  totalSummonsCounter: number = 0;
+  bannerUnitPool: ALL_UNITS_TYPE = _.cloneDeep(ALL_STANDARD_UNITS);
 
   ngOnInit() {
     FEATURED_UNITS.forEach(unit => {
@@ -71,6 +73,7 @@ export class RecruitComponent {
 
   handleLegendaryUnit(legendaryCharacters: IUnit[], randomNumber: number) {
     // non targeted banner
+    this.legendaryCounter++;
     if (this.selectedBanner === "Default") {
       this.softPity = PITY.soft;
       return legendaryCharacters[randomNumber];
@@ -202,6 +205,7 @@ export class RecruitComponent {
       loops = 10;
     }
     for (let i = 0; i < loops; i++) {
+      this.totalSummonsCounter++;
       this.totalHopeLuxiteSpent += 150;
       const rarity = this.getRandomRarity();
       const character = this.getRandomCharacter(rarity);
