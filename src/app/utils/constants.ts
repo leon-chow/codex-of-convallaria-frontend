@@ -117,22 +117,22 @@ export const FEATURED_UNITS = [
   {
     name: "Acambe",
     bannerType: "debut",
-    imageUrl: "test",
-    spriteUrl: "test",
+    imageUrl: "https://patchwiki.biligame.com/images/llzj/thumb/8/87/r17kq2hdy7b8ngc2nbvv8x75avkdjd0.png/800px-%E7%AB%8B%E7%BB%98_%E9%98%BF%E5%9D%8E%E8%B4%9D.png",
+    spriteUrl: "https://patchwiki.biligame.com/images/llzj/thumb/3/3a/6vojf1gl9gt9abd0oan74tod9si69vi.png/84px-%E5%83%8F%E7%B4%A0%E4%BA%BA%E7%89%A9_%E9%98%BF%E5%9D%8E%E8%B4%9D.png",
     class: "destroyer"
   },
   {
     name: "Safiyyah",
     bannerType: "debut", 
-    imageUrl: "test", 
-    spriteUrl: "test",
+    imageUrl: "https://patchwiki.biligame.com/images/llzj/thumb/1/19/qrwabia53g6jvbdzwy6hrz4ins3eop7.png/800px-%E7%AB%8B%E7%BB%98_%E7%B4%A2%E8%8F%B2%E4%BA%9A.png", 
+    spriteUrl: "https://patchwiki.biligame.com/images/llzj/thumb/b/be/q3wm0wduu73rmrf4vxmyhj532a7ddaj.png/84px-%E5%83%8F%E7%B4%A0%E4%BA%BA%E7%89%A9_%E7%B4%A2%E8%8F%B2%E4%BA%9A.png",
     class: "seeker"
   },
   {
     name: "Auguste",
     bannerType: "debut", 
-    imageUrl: "test", 
-    spriteUrl: "test",
+    imageUrl: "https://patchwiki.biligame.com/images/llzj/thumb/3/37/7pwl02ecakjr040atmvnowhlpgj3gir.png/800px-%E7%AB%8B%E7%BB%98_%E5%A5%A5%E5%8F%A4%E6%96%AF%E7%89%B9.png", 
+    spriteUrl: "https://patchwiki.biligame.com/images/llzj/thumb/4/44/ezqu5j5zvw2p0vthzr51lwqbvqipji3.png/84px-%E5%83%8F%E7%B4%A0%E4%BA%BA%E7%89%A9_%E5%A5%A5%E5%8F%A4%E6%96%AF%E7%89%B9.png",
     class: "breaker"
   },
 ];
